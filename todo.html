@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Todo App</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      min-height: 100vh;
+      background: #f5f5f5;
+      color: #222;
+      align-items: center;
+      justify-content: center;
+    }
+
+    main {
+      width: min(520px, 90vw);
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 32px 28px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: 2rem;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    form input[type="text"] {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    form input[type="text"]:focus {
+      border-color: #5c6ac4;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(92, 106, 196, 0.2);
+    }
+
+    form button {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #5c6ac4;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    form button:hover,
+    form button:focus {
+      background: #4b57a8;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      background: #f7f8ff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid #e0e3ff;
+    }
+
+    li.completed .todo-text {
+      text-decoration: line-through;
+      color: #777;
+    }
+
+    .todo-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .todo-text {
+      word-break: break-word;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    button[data-action] {
+      border: none;
+      background: transparent;
+      color: #5c6ac4;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    button[data-action]:hover,
+    button[data-action]:focus {
+      background: rgba(92, 106, 196, 0.1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 24px 12px;
+      color: #777;
+    }
+
+    #clear-completed {
+      width: 100%;
+      margin-top: 24px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      color: #444;
+      transition: background 0.2s ease;
+    }
+
+    #clear-completed:hover,
+    #clear-completed:focus {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Todo List</h1>
+    <form id="todo-form" autocomplete="off">
+      <input id="todo-input" type="text" name="todo" placeholder="What needs to be done?" required />
+      <button type="submit">Add</button>
+    </form>
+    <ul id="todo-list" aria-live="polite"></ul>
+    <p id="empty-state" class="empty-state" hidden>No tasks yet — add your first todo above!</p>
+    <button id="clear-completed" type="button">Clear completed tasks</button>
+  </main>
+  <script src="todo.js"></script>
+</body>
+</html>
